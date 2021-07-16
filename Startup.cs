@@ -42,7 +42,10 @@ namespace WebAPI_Tren
             
             services.AddSingleton<IInMemItemsRepository, MongoDBItemsRepository>();
             
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.SuppressAsyncSuffixInActionNames = false;
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI_Tren", Version = "v1" });
